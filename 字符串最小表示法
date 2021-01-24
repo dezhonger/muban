@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 2000010;
+
+int n;
+char a[N], b[N];
+
+//输入为原字符串循环一倍后的字符串： 如原串为bcda, 输入为bcdabcda
+//返回最小表示法的起始位置，并把最后一位置为'\0'
+//对于bcdabcda应该返回3，因为从第3位开始的长度为n(n=4)的字符串(abcd)最小
+int get_min(char s[])
+{
+    int i = 0, j = 1;
+    while (i < n && j < n)
+    {
+        int k = 0;
+        while (k < n && s[i + k] == s[j + k]) k ++ ;
+        if (k == n) break;
+        if (s[i + k] > s[j + k]) i += k + 1;
+        else j += k + 1;
+        if (i == j) j ++ ;
+    }
+    int k = min(i, j);
+    s[k + n] = 0;
+    return k;
+}
+
+int main()
+{
+    scanf("%s%s", a, b);
+    n = strlen(a);
+    memcpy(a + n, a, n);
+    memcpy(b + n, b, n);
+
+    int x = get_min(a), y = get_min(b);
+    if (strcmp(a + x, b + y)) puts("No");
+    else
+    {
+        puts("Yes");
+        puts(a + x);
+    }
+
+    return 0;
+}
+
