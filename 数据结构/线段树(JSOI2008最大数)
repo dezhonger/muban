@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+//Filename: 1198.cpp
+//https://www.luogu.com.cn/problem/P1198
+//https://www.acwing.com/problem/content/1277/
+//Author: dezhonger - csdisassembly@gmail.com
+
+//Create: 2021-03-05 23:23:28
+
+#define reps(i, a, b) for(int i = (a); i < (b); i++)
+#define reps(i, a, b) for(int i = (a); i < (b); i++)
+#define pb push_back
+#define ps push
+#define mp make_pair
+#define CLR(x,t) memset(x,t,sizeof x)
+#define LEN(X) strlen(X)
+#define F first
+#define S second
+
+#define Debug(x) cout<<#x<<"="<<x<<endl;
+
+typedef long long LL;
+
+const int n = 200010;
+struct Node {
+	int l, r, v;
+}tr[n << 2];
+
+int m, d;
+
+void pushUp(int cur) {
+	tr[cur].v = max(tr[cur << 1].v, tr[cur << 1 | 1].v);
+}
+
+void build(int cur, int l, int r) {
+	tr[cur] = {l, r};
+	if (l == r) return;
+	int mid = l + r >> 1;
+	build(cur << 1, l, mid);
+	build(cur << 1 | 1, mid + 1, r);
+}
+
+void modify(int cur, int pos, int val) {
+	if (tr[cur].l == tr[cur].r) tr[cur].v = val;
+	else {
+		int mid = tr[cur].l + tr[cur].r >> 1;
+		if (pos <= mid) modify(cur << 1, pos, val);
+		else modify(cur << 1 | 1, pos, val);
+		pushUp(cur);
+	}
+}
+
+int query(int cur, int l, int r) {
+	if (tr[cur].l >= l && tr[cur].r <= r) return tr[cur].v;
+	int mid = tr[cur].l + tr[cur].r >> 1;
+	int res = 0;
+	if (l <= mid) res = max(res, query(cur << 1, l, r));
+	if (r > mid) res = max(res, query(cur << 1 | 1, l, r));
+	return res;
+}
+
+int main() {
+	scanf("%d%d", &m, &d);
+	build(1, 1, m);
+	int pos = 1, last = 0;
+	while (m--) {
+		char op[2];
+		int x;
+		scanf("%s%d", op, &x);
+		if (op[0] == 'A') modify(1, pos, (x + last) %d), pos++;
+		else {
+			last = query(1, pos - x, pos - 1);
+			printf("%d\n", last);
+		}
+	}
+    return 0;
+}
+
