@@ -1,45 +1,70 @@
-#include <bits/stdc++.h>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+
 using namespace std;
-//Filename: 849.cpp
-//
-//Author: dezhonger - csdisassembly@gmail.com
-//dijkstra求最短路算法模板
 
-//Create: 2021-03-07 13:50:47
+typedef pair<int, int> PII;
 
-const int N = 510;
+const int N = 1e6 + 10;
+
 int n, m;
-int g[N][N];
+int h[N], w[N], e[N], ne[N], idx;
 int dist[N];
 bool st[N];
 
-void dijkstra() {
-	memset(dist, 0x3f, sizeof dist);
-	dist[1] = 0;
-	//循环n-1次
-	for (int i = 0; i < n - 1; i++) {
-		int t = -1;
-		for (int j = 1; j <= n; j++) {
-			if (!st[j] && (t == -1 || dist[t] > dist[j])) t = j;
-		}
-		for (int j = 1; j <= n; j++) {
-			dist[j] = min(dist[j], dist[t] + g[t][j]);
-		}
-		st[t] = true;
-	}
+void add(int a, int b, int c)
+{
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
-int main() {
-	scanf("%d%d", &n, &m);
-	memset(g, 0x3f, sizeof g);
-	while (m--) {
-		int a, b, c;
-		scanf("%d%d%d", &a, &b, &c);
-		g[a][b] = min(g[a][b], c);
-	}
+int dijkstra()
+{
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] = 0;
+    priority_queue<PII, vector<PII>, greater<PII>> heap;
+    heap.push({0, 1});
 
-	dijkstra();
-	if (dist[n] == 0x3f3f3f3f) printf("%d\n", -1);
-	else printf("%d\n", dist[n]);
-	return 0;
+    while (heap.size())
+    {
+        auto t = heap.top();
+        heap.pop();
+
+        int ver = t.second, distance = t.first;
+
+        if (st[ver]) continue;
+        st[ver] = true;
+
+        for (int i = h[ver]; i != -1; i = ne[i])
+        {
+            int j = e[i];
+            if (dist[j] > dist[ver] + w[i])
+            {
+                dist[j] = dist[ver] + w[i];
+                heap.push({dist[j], j});
+            }
+        }
+    }
+
+    if (dist[n] == 0x3f3f3f3f) return -1;
+    return dist[n];
 }
+
+int main()
+{
+    scanf("%d%d", &n, &m);
+
+    memset(h, -1, sizeof h);
+    while (m -- )
+    {
+        int a, b, c;
+        scanf("%d%d%d", &a, &b, &c);
+        add(a, b, c);
+    }
+
+    cout << dijkstra() << endl;
+
+    return 0;
+}
+
