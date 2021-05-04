@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//Filename: acwing835.cpp 
-//https://www.acwing.com/problem/content/837/
+//Filename: acwing835.cpp
 //
 //Author: dezhonger - csdisassembly@gmail.com
 //Create: 2021-05-04 21:48:21
