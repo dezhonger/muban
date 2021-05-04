@@ -41,6 +41,6 @@ int main() {
 		if (op[0] == 'I') insert(str);
 		else printf("%d\n", query(str));
 	}
-    return 0;
+	return 0;
 }
 
