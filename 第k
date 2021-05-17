@@ -1,0 +1,36 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+//Filename: 786.cpp
+//
+//Author: dezhonger - csdisassembly@gmail.com
+//Create: 2021-05-15 00:10:26
+//https://www.luogu.com.cn/problem/P1923
+//Last modified: 2021-05-15 00:13:37
+
+
+const int N = 5000010;
+int n, k;
+int a[N];
+
+int findK(int a[], int l, int r, int k) {
+    if (l == r) return a[l];
+    int x = a[(l + r) >> 1], i = l - 1, j = r + 1;
+    while (i < j) {
+        do i++; while (a[i] < x);
+        do j--; while (a[j] > x);
+        if (i < j) swap(a[i], a[j]);
+    }
+    if (k <= j - l + 1) return findK(a, l, j, k);
+    else return findK(a, j + 1, r, k - (j - l + 1));
+}
+
+int main() {
+    ios::sync_with_stdio (false);
+    cin.tie (0);
+    cin >> n >> k;
+    for (int i = 0; i < n; i++) cin >> a[i];
+    //题目是从0开始
+    cout << findK(a, 0, n - 1, k + 1);
+    return 0;
+}
