@@ -1,4 +1,5 @@
 typedef long long LL;
+int mod = (int)1e9 + 7;
 LL powmod(LL a,LL b) {
 	LL res = 1;
 	a %= mod;
