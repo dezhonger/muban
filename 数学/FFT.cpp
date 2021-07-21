@@ -6,7 +6,7 @@ using namespace std;
 
 
 //大于n*m的最小的2的幂
-const int N = 3000010;
+const int N = 300'0010;
 const double PI = acos(-1);
 
 int n, m;
