@@ -1,3 +1,6 @@
+//https://www.acwing.com/problem/content/3125/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -50,7 +53,9 @@ void fft(Complex a[], int inv)
 
 int main() {
     scanf("%d%d", &n, &m);
+    //a[0]*x^0 + a[1]*x^1 + a[2]*x^2 + ... + a[n]*x^n
     for (int i = 0; i <= n; i ++) scanf("%lf", &a[i].x);
+    //b[0]*x^0 + b[1]*x^1 + b[2]*x^2 + ... + b[m]*x^n
     for (int i = 0; i <= m; i ++) scanf("%lf", &b[i].x);
     while ((1 << bit) < n + m + 1) bit++;
     tot = 1 << bit;
