@@ -65,7 +65,9 @@ int main() {
     for (int i = 0; i < tot; i++) a[i] = a[i] * b[i];
     fft(a, -1);
     for (int i = 0; i <= n + m; i++)
-        printf("%d ", (int)(a[i].x / tot + 0.5));
-        
+        printf("%d ", (long long)(a[i].x / tot + 0.5));
+    //如果是多组数据的话，记得清空原数组
+    //bit = tot = 0;
+    //for (int i = 0; i <= n + m; i++) a[i].x = a[i].y = b[i].x = b[i].y = 0;
     return 0;
 }
