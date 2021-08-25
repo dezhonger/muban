@@ -31,6 +31,7 @@ void pushup(int p) {
 //分配节点
 int get_node(int key) {
     tr[++idx].key = key;
+    tr[idx].l = tr[idx].r = 0;
     tr[idx].val = rand();
     tr[idx].cnt = tr[idx].size = 1;
     return idx;
@@ -52,6 +53,7 @@ void zag(int &p) {
 
 //初始化操作
 void build() {
+    idx = 0;
     get_node(-INF), get_node(INF);
     root = 1, tr[root].r = 2;
     pushup(root);
