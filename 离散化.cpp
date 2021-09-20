@@ -50,6 +50,7 @@ int main() {
 	//离散化操作
 	sort(alls.begin(), alls.end());
 	alls.erase(unique(alls.begin(), alls.end()), alls.end());
+	//all.resize(unique(all.begin(), all.end()) - all.begin());
 
 	for (auto item: add) {
 		int x = find(item.F);
