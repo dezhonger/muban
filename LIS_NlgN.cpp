@@ -26,6 +26,7 @@ int main() {
 		int l = 0, r = len;
 		while (l < r) {
 			int mid = l + r + 1 >> 1;
+			//如果是最长不降子序列，这里改为f[mid] <= x
 			if (f[mid] < x) l = mid;
 			else r = mid - 1;
 		}
