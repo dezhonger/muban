@@ -1,15 +1,15 @@
-struct DSU
-{
-    vector<int> f, siz;
+struct DSU {
+    std::vector<int> f, siz;
+    
     DSU() {}
-    DSU() (int n) {
+    DSU(int n) {
         init(n);
     }
     
     void init(int n) {
         f.resize(n);
-        iota(f.begin(), f.end(), 0);
-        siz.assgin(n, 1);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
     }
     
     int find(int x) {
@@ -37,4 +37,4 @@ struct DSU
     int size(int x) {
         return siz[find(x)];
     }
-}
+};
