@@ -11,6 +11,10 @@ LL gcd(LL a,LL b) { return b?gcd(b,a%b):a;}
 const int N = 100010;
 int son[N][26], cnt[N], idx;
 char str[N];
+//如果是多组数组的话，需要
+// memset(son, 0, sizeof son);
+// memset(cnt, 0, sizeof cnt);
+// idx = 0;
 
 void insert(char *str) {
 	int p = 0;
