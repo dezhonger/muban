@@ -6,8 +6,6 @@ using namespace std;
 //Create: 2021-05-04 21:48:21
 //Last modified: 2021-05-04 21:58:39
 
-LL gcd(LL a,LL b) { return b?gcd(b,a%b):a;}
-
 const int N = 100010;
 int son[N][26], cnt[N], idx;
 char str[N];
@@ -47,4 +45,3 @@ int main() {
 	}
 	return 0;
 }
-
