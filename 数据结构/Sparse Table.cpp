@@ -8,7 +8,6 @@ using namespace std;
 #endif
  
 typedef long long LL;
-
 // https://www.luogu.com.cn/problem/P3865 P3865 【模板】ST 表
 struct ST {
     int M;
@@ -17,7 +16,7 @@ struct ST {
     ST() {}
     ST(int n) {
         w = vector<int>(n + 1);
-        //pow(2, M) >= n, there is no harm in applying for more.
+        // pow(2, M) >= n, there is no harm in applying for more.
         M = log(n) / log(2) + 2; 
         f = vector<vector<int>>(n + 1, vector<int>(M));
     }
@@ -33,16 +32,13 @@ struct ST {
                 else f[i][j] = max(f[i][j - 1], f[i + (1 << j - 1)][j - 1]);
             }
         }
-        
     }
     
     int query(int l, int r) {
-        int len = r - l + 1;
         int k = log2(r - l + 1);
         return max(f[l][k], f[r - (1 << k) + 1][k]);
     }
 };
-
 
 int main()
 {
