@@ -1,3 +1,4 @@
+// 两次dfs求直径的方法不能用于存在负权边的情形 https://oi-wiki.org/graph/tree-diameter/
 #include <bits/stdc++.h>
 using namespace std;
 
