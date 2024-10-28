@@ -19,12 +19,13 @@ void add(int a, int b, int c)
     e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx ++ ;
 }
 
+// 求出从1号点到其他点的最短距离
 int dijkstra()
 {
     memset(dist, 0x3f, sizeof dist);
     dist[1] = 0;
     priority_queue<PII, vector<PII>, greater<PII>> heap;
-    heap.push({0, 1});
+    heap.push({0, 1}); //点1到点1的最短距离是0(初始化)
 
     while (heap.size())
     {
