@@ -39,6 +39,7 @@ void build(int cur, int l, int r) {
 	int mid = l + r >> 1;
 	build(cur << 1, l, mid);
 	build(cur << 1 | 1, mid + 1, r);
+	// 这里需要 pushUp(cur);
 }
 
 void modify(int cur, int pos, int val) {
