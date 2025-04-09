@@ -41,15 +41,16 @@ struct Tarjan {  // index from 0 to n - 1
         return ans;
     }
 
-    void print() {
+    void debug() {
         for (int i = 0; i < scc_cnt; i++) {
             cout << "SCC " << i << ": ";
-            for (int j = 0; j < SCC[i].size(); j++) {
+            for (int j = 0; j < (int)SCC[i].size(); j++) {
                 cout << SCC[i][j] << " ";
             }
             cout << endl;
         }
 
+        // belong to which SCC
         for (int i = 0; i < n; i++) {
             cout << "Node " << i << ": ";
             cout << col[i] << endl;
