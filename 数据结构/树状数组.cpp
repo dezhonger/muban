@@ -17,4 +17,8 @@ struct Bit {
         for (int i = pos; i; i -= lowbit(i)) res += tr[i];
         return res;
     }
+
+    int query(int left, int right) {
+        return sum(right) - sum(left - 1);
+    }
 };
