@@ -20,3 +20,12 @@ int C(int m, int n){
     for(int i = 1; i <= n; i += 1) res = 1LL * res * inv(i) % mod;
     return res;
 }
+
+// 直接求，可能会溢出，需要注意
+LL C(int n, int k) {
+	k = min(k, n - k);
+	long long res = 1;
+	for (int i = 1; i <= k; i++) res = res * (n + 1 - i) / i;
+	return res;
+}
+
