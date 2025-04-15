@@ -10,6 +10,7 @@ using namespace std;
 typedef long long LL;
 // https://www.luogu.com.cn/problem/P3865 P3865 【模板】ST 表
 struct ST {
+    // 下标都是从1开始
     int M;
     vector<int> w;
     vector<vector<int>> f;
