@@ -1,3 +1,15 @@
+
+
+// 递推求1-n对p的逆元
+int inv[20000530];
+void cal(int n, int p) {
+    inv[0] = 0, inv[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        inv[i] = (long long)(p - p / i) * inv[p % i] % p;
+    }
+}
+
+
 // 线性求任意 n 个数的逆元
 // https://oi-wiki.org/math/number-theory/inverse/#%E7%BA%BF%E6%80%A7%E6%B1%82%E4%BB%BB%E6%84%8F-n-%E4%B8%AA%E6%95%B0%E7%9A%84%E9%80%86%E5%85%83
 s[0] = 1;
