@@ -50,7 +50,7 @@ int main()
 
 
 
-// muban
+// muban 参考上面的样例
 const int N = 100010, M = 1000010;
 int ne[N];
 vector<int> solve(int n, string p, int m, string s) {
