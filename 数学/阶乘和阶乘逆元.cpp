@@ -11,7 +11,8 @@ void factorial() {
 }
 
 // 组合数
-LL C(int n, int m) {
-    if (n < m) return 0;
+LL comb(int n, int m) {
+    if (n < m || n < 0 || m < 0)
+        return 0;
     return 1LL * f[n] * g[m] % mod * g[n - m] % mod;
 }
