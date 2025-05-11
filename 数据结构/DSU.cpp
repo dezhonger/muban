@@ -41,4 +41,10 @@ struct DSU {
     int size(int x) {
         return siz[find(x)];
     }
+
+    void print() {
+        for (int i = 0; i < f.size(); i++) {
+            cout << i << " " << f[i] << " " << siz[i] << " " << edges[i] << endl;
+        }
+    }
 };
