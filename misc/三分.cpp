@@ -7,7 +7,6 @@ while (r - l > 5) {
     ll m2 = r - (r - l) / 3;
     ll val1 = compute(m1);
     ll val2 = compute(m2);
-    // 求最小值需要把这里反向
     if (val1 < val2)
         l = m1;
     else
