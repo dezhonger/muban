@@ -17,3 +17,26 @@ while (r - l > 5) {
 for (ll x = l; x <= r; ++x) {
     ans = max(ans, compute(n, m, a, b, x));
 }
+
+
+// 三分板子 最小值
+double l = 0.0, r = 1e9;
+while (r - l >= 1e-7) {
+    // 要求1e-6
+    double s = (r - l) / 3.0;
+    double t1 = l + s;
+    double t2 = l + 2 * s;
+
+    double res1 = calc(y, x, v, t1);
+    double res2 = calc(y, x, v, t2);
+
+    if (res1 >= res2) {
+        l = t1;
+    } else {
+        r = t2;
+    }
+}
+
+System.out.println(calc(y, x, v, l));
+
+}
