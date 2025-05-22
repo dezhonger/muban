@@ -76,3 +76,8 @@ vector<int> solve(int n, string p, int m, string s) {
     }
     return ans;
 }
+
+// 如何调用
+// solve(s1.size(), " " + s1, s2.size(), " " + s2);
+// s1="ABA", s2="ABABABC", ans={0, 2}
+
