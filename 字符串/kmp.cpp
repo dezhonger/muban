@@ -70,7 +70,7 @@ vector<int> solve(int n, string p, int m, string s) {
             j++;
         if (j == n) {
             // printf("%d ", i - n);
-            ans.push_back(i - n);
+            ans.push_back(i - n); // 这里的下标是从0开始的,如果想从1开始,这里改为i-n+1
             j = ne[j];
         }
     }
@@ -80,4 +80,7 @@ vector<int> solve(int n, string p, int m, string s) {
 // 如何调用
 // solve(s1.size(), " " + s1, s2.size(), " " + s2);
 // s1="ABA", s2="ABABABC", ans={0, 2}
+// for (int i = 1; i <= s1.size(); i++) {
+//     cout << ne[i] << " \n"[i == ne.size()];
+// }
 
