@@ -1,18 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 代码的下标是从0开始的
+// 2**17 >= MAXN
+static const int MAXN = 100000;
+static const int LOG = 17;
+
+int n; // 节点个数
+vector<pair<int,int>> adj[MAXN]; // 图的边表示
+int up[LOG+1][MAXN]; // 倍增数组
+int depth[MAXN]; //深度数组, 0是根节点 depth[0]=0;
+long long dist0[MAXN]; // 根节点到每个节点的距离
+
 
 class Solution {
 public:
-    // 2**17 >= MAXN
-    static const int MAXN = 100000;
-    static const int LOG = 17;
 
-    int n; // 节点个数
-    vector<pair<int,int>> adj[MAXN]; // 图的边表示
-    int up[LOG+1][MAXN]; // 倍增数组
-    int depth[MAXN]; //深度数组, 0是根节点 depth[0]=0;
-    long long dist0[MAXN]; // 根节点到每个节点的距离
 
     void dfs(int u, int p) {
         up[0][u] = p;
@@ -50,7 +53,7 @@ public:
         return dist0[u] + dist0[v] - 2LL * dist0[w];
     }
 
-    vector<int> lca_init(vector<vector<int>>& edges) {
+    void lca_init(vector<vector<int>>& edges) {
         n = edges.size() + 1; // 节点个数是边的数 +1
         for (int i = 0; i < n; ++i) {
             adj[i].clear();
@@ -63,7 +66,7 @@ public:
 
         depth[0] = 0;
         dist0[0] = 0;
-        dfs(0, 0); //求出 depth 和 dist0
+        dfs(0, 0); //求出 depth 和 dist0, 注意这里根的父节点写为自己
 
         // 预处理 up 数组
         for (int k = 1; k <= LOG; ++k) {
