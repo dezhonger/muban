@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // 代码的下标是从0开始的
 // 2**17 >= MAXN
 static const int MAXN = 100000;
@@ -15,8 +12,6 @@ long long dist0[MAXN]; // 根节点到每个节点的距离
 
 class Solution {
 public:
-
-
     void dfs(int u, int p) {
         up[0][u] = p;
         for (auto &e : adj[u]) {
