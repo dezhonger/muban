@@ -59,6 +59,9 @@ public:
             adj[v].emplace_back(u, w);
         }
 
+        memset(up, 0, sizeof(up));
+        memset(depth, 0, sizeof(depth));
+        memset(dist0, 0, sizeof(dist0));
         depth[0] = 0;
         dist0[0] = 0;
         dfs(0, 0); //求出 depth 和 dist0, 注意这里根的父节点写为自己
