@@ -6,3 +6,8 @@ inline int bit_length(ull x) {
     // 例如 x=1 -> clz=63，64-63 = 1；x=5 -> clz=61, 64-61=3
     return 64 - __builtin_clzll(x);
 }
+
+// x>0, 返回最大的k, 2^k | x
+int v2(long long x) {
+    return __builtin_ctzll(x);
+}
