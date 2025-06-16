@@ -64,3 +64,21 @@
         }
         return fa[a][0];
     }
+
+
+// 调用
+// 初始化
+memset(h, -1, sizeof h);
+idx = 0;
+
+// 建图
+add(u, v, w);
+add(v, u, w); // 反向边
+
+// BFS + 倍增预处理
+bfs(0);
+
+// 求u, v 的LCA
+int L = lca(u, v);
+// 求 u,v 距离
+ LL total = distRoot[u] + distRoot[v] - 2 * distRoot[L];
