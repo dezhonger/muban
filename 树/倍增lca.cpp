@@ -121,6 +121,11 @@ int depth[N], fa[N][P];
 //bfs求的时候用的
 int q[N];
 
+主函数里调用
+//    memset(h, -1, sizeof h);
+//   memset(fa, 0, sizeof fa);
+//    idx = 0;
+
 void add(int a, int b)
 {
     e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;
