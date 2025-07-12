@@ -1,5 +1,5 @@
 //  S = sum_{d=1..N} floor(N/d) ，O(sqrt(N))
-LL f(int N) {
+LL f(LL N) {
     LL S = 0;
     for (LL i = 1, j; i <= N; i = j + 1) {
         LL q = N / i;
